@@ -1,0 +1,1 @@
+# email-template-foundation-laravel
