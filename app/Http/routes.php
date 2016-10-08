@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/sendEmail','EmailController@initial');
+
+Route::post('/emailSave','EmailController@emailTempSave');
+
+Route::get('/emailTemp','EmailController@viewEmailTemp');
+
+Route::get('/emailTemplate','EmailController@viewEmailTemplate');
+
+Route::get('/emailTemp/{emailTemp}','EmailController@showEmailTemp');
