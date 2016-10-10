@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Emailtemp extends Model
 {
     //
-    protected $fillable = array('tempname', 'tempheader', 'tempdesc', 'tempbody','tempfooter', 'emailid'); 
+    protected $fillable = array('tempheader', 'tempdesc', 'tempbody','tempfooter'); 
+    
 }

@@ -1,5 +1,7 @@
 <?php
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,10 +12,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/emailSave', 'EmailController@emailTempSave');
 
 Route::auth();
 
@@ -21,10 +22,16 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/sendEmail','EmailController@initial');
 
-Route::post('/emailSave','EmailController@emailTempSave');
 
 Route::get('/emailTemp','EmailController@viewEmailTemp');
 
 Route::get('/emailTemplate','EmailController@viewEmailTemplate');
 
 Route::get('/emailTemp/{emailTemp}','EmailController@showEmailTemp');
+
+// This is route file...
+ 
+Route::get('/form','EmailController@sendForm');
+
+Route::get('/test','EmailController@test');
+

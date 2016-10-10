@@ -14,12 +14,10 @@ class CreateEmailtempTable extends Migration
     {
         Schema::create('emailtemps', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tempname');
-            $table->string('tempheader');
-            $table->string('tempdesc');
-            $table->string('tempbody');
-            $table->string('tempfooter');
-            $table->string('emailid');
+            $table->text('tempheader');
+            $table->text('tempdesc');
+            $table->text('tempbody');
+            $table->text('tempfooter');
             $table->timestamps('created_at');
         });
     }

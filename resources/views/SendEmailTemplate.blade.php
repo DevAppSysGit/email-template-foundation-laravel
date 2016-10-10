@@ -3,14 +3,14 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width" />
+
   <title>Title</title>
+
      {!! Html::style('css/frmcss.css') !!}
 
   	 {!! Html::style('css/email.css') !!}	
 
-  	 {!!Html::script('js/jquery.min.js') !!}
-
-	</head>
+  </head>
 
 <body>
 <div class="form-style-5">
@@ -58,6 +58,7 @@
 {!!Form::close()!!}
 
 </div>
+  {!!Html::script('js/jquery.min.js') !!}
    {!! Html::script('js/emailfunction.js') !!}
    <script type="text/javascript">
 $('#temail').tagsInput({width:'auto'});

@@ -16,22 +16,21 @@ use App\Emailtemp;
 
 use Session;
 
-class emailController extends Controller
+class EmailController extends Controller
 {
     //
     public function initial()
     {
     	return view('SendEmailTemplate');
     }
-    public function emailTempSave(EmailTemplateRequest $request)
+
+    public function emailTempSave(Request $request)
     {
     	$emailTemp = new Emailtemp($request->all());
-    	$emailTemp->tempname = $request->txttempname;
-    	$emailTemp->tempheader = $request->txtheader;
-    	$emailTemp->tempdesc = $request->txtdesc;
-    	$emailTemp->tempbody = $request->txttempbody;
-    	$emailTemp->tempfooter=$request->txtfooter;
-        $emailTemp->emailid=$request->txtemail;
+    	$emailTemp->tempheader = $request->TempHead;
+    	$emailTemp->tempdesc = $request->TempDesc;
+    	$emailTemp->tempbody = $request->TempBody;
+    	$emailTemp->tempfooter=$request->TempFooter;
     	$emailTemp->save();
         
         return redirect ('emailTemp/'.$emailTemp->id);
@@ -41,6 +40,7 @@ class emailController extends Controller
         //return redirect('/SendEmailTemplate'); 
 
     }
+
     public function viewEmailTemp()
     {
     	return view('Emailtemp');
@@ -61,20 +61,16 @@ class emailController extends Controller
             'emailTemp' => $emailTemp 
             ]);
 
-        Mail::send('Emailtemp', ['title' => $title, 'content' => $content], function ($message)
-        {
-
-            $message->from('prajna@pacesoft.in', 'Prajna Thinkpace');
-
-            $message->to($emailTemp->emailid);
-
-        });
-
     }
 
-    public function send(Request $request){
-    //Logic will go here        
-    
+    public function sendForm(){
+        //Logic will go here
+        $title ="Project";        
+        return view('form',compact('title'));
+    }
+
+    public function test(){
+        return view('test');
     }
       
 }

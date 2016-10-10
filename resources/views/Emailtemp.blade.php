@@ -15,15 +15,11 @@
 
 @if(isset($emailTemp))
 
-echo "hi";
-
 {!!Form::open(array('url'=>url('emailTemp/'.$emailTemp->id),'method'=>'GET')) !!}
 
 @else
 
 {!!Form::open(array('url'=>'','method' => '')) !!}
-
-echo "hello";
 
 @endif
 
@@ -34,16 +30,23 @@ echo "hello";
     <tr>
       <!-- The class, align, and <center> tag center the container -->
       <td class="float-center-set bclrF">
+       <table class="menu small-vertical" align="center">
+          <tr> <td> <table> <tr>
+          <th class="menu-item"><a href="http://churchworship.in/about.php" target="_blank">About Us</a></th>
+          <th class="menu-item"><a href="http://churchworship.in/feature.php" target="_blank">Features</a></th>
+          <th class="menu-item"><a href="http://churchworship.in/contact.php" target="_blank">Contact Us</a></th>
+        </tr> </table> </td> </tr>
+        </table>
        <center data-parsed="">
-        <a href="http://www.churchworship.in/">
-         <img src="{{ asset('images/h1.png') }}" alt="" class="float-center" /></a></center>
+        <a href="http://www.churchworship.in/" target="_blank">
+       <img src="{{ asset('images/h1.png') }}" alt="" class="float-center" /></a></center>
 </td>
     </tr>
  <tr>
   <td class="float-center-set bclrS">
  <table class="float-center-set2">
   <tr> <td> <p class="text-left fontstyle"> {{isset($emailTemp)?$emailTemp->tempheader : null}} </p> </td> </tr>
-  <tr> <td> <p class="text-left"> {{isset($emailTemp)?$emailTemp->tempdesc : null}} </p> </td> </tr>
+  <tr> <td> <p class="text-left body-fontstyle"> {{isset($emailTemp)?$emailTemp->tempdesc : null}} </p> </td> </tr>
   <tr> <td> <table border="0" cellpadding="0" cellspacing="0" width="100%">
  <tr>
   <td width="260" valign="top">
@@ -69,7 +72,7 @@ echo "hello";
   </td>
  </tr>
 </table></td></tr>
-  <tr> <td> <p class="text-left"> {{isset($emailTemp)?$emailTemp->tempbody : null}} </p> </td> </tr>
+  <tr> <td> <p class="text-left body-fontstyle"> {{isset($emailTemp)?$emailTemp->tempbody : null}} </p> </td> </tr>
  </table>
 </td>
  </tr>
@@ -77,21 +80,21 @@ echo "hello";
  <td class="float-footer">
  <table border="0" cellpadding="0" cellspacing="0" width="100%">
  <tr>
-  <td width="75%">
- &reg; {{isset($emailTemp)?$emailTemp->tempfooter : null}}
+  <td width="75%"> <p class="footer-fontstyle"> 
+ &reg; {{isset($emailTemp)?$emailTemp->tempfooter : null}} </p>
 </td>
   <td>
    <table border="0" cellpadding="0" cellspacing="0">
   <tr>
    <td>
-    <a href="http://www.twitter.com/">
-     <img src="{{ asset('images/tw.ico') }}" alt="Twitter" width="38" height="38" style="display: block;" border="0" />
+    <a href="http://www.thinkpace.in/" target="_blank">
+     <img src="{{ asset('images/tw.png') }}" alt="Twitter" width="38" height="38" style="display: block;" border="0" />
     </a>
    </td>
    <td >&nbsp;</td>
    <td>
-    <a href="http://www.twitter.com/">
-     <img src="{{ asset('images/fb.ico') }}" alt="Facebook" width="38" height="38" style="display: block;" border="0" />
+    <a href="http://www.facebook.com/churchworshipsoftware" target="_blank">
+     <img src="{{ asset('images/fb.png') }}" alt="Facebook" width="38" height="38" style="display: block;" border="0" />
     </a>
    </td>
   </tr>

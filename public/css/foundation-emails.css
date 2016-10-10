@@ -808,11 +808,21 @@ td.float-footer {
    padding: 20px 20px 20px 20px;"
 }
 
+p.footer-fontstyle {
+   color: #ffffff; 
+}
+
 p.fontstyle {
   color: #3D5166; 
   font-family: Times New Roman;
   font-size: 20px;
   font-weight: bold;
+}
+
+p.body-fontstyle {
+  color: #3D5166; 
+  font-family: Times New Roman;
+  font-size: 20px;
 }
 
 th.float-center {
@@ -1212,7 +1222,7 @@ table.menu {
     padding-right: 10px; }
     table.menu td.menu-item a,
     table.menu th.menu-item a {
-      color: #2199e8; }
+      color: #463A5D; }
 
 table.menu.vertical td.menu-item,
 table.menu.vertical th.menu-item {
