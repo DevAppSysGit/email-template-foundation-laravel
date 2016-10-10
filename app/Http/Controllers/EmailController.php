@@ -27,10 +27,10 @@ class EmailController extends Controller
     public function emailTempSave(Request $request)
     {
     	$emailTemp = new Emailtemp($request->all());
+        $emailTemp->tempname = $request->TempName;
     	$emailTemp->tempheader = $request->TempHead;
     	$emailTemp->tempdesc = $request->TempDesc;
     	$emailTemp->tempbody = $request->TempBody;
-    	$emailTemp->tempfooter=$request->TempFooter;
     	$emailTemp->save();
         
         return redirect ('emailTemp/'.$emailTemp->id);
@@ -69,8 +69,22 @@ class EmailController extends Controller
         return view('form',compact('title'));
     }
 
+    public function previewForm(){
+        
+        $input = Input::get();
+        $tempheader = $input['TempHead'];
+        $tempdesc = $input ['TempDesc'];
+        $tempbody = $input['TempBody'];
+
+        return view('formView',['tempheader' => $tempheader, 'tempdesc' => $tempdesc, 'tempbody'=>$tempbody]);
+    }
+
     public function test(){
         return view('test');
     }
-      
+
+    public function sendTemp() {
+        $templates = Emailtemp::lists('tempname','id');
+        return view('sendTemp',['templates'=>$templates]);
+    }      
 }

@@ -8,10 +8,19 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                     <button><a href="{{route('get.form')}}">Create Template</a></button>
+                </div>
+
+                <div class="panel-body">
+                  <button><a href="{{route('get.sendTemp')}}">Send Template</a></button>
+                </div>
+
+                <div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 @endsection

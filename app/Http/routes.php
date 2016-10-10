@@ -14,14 +14,18 @@
 */
 use Illuminate\Support\Facades\Route;
 
-Route::post('/emailSave', 'EmailController@emailTempSave');
+
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/sendEmail','EmailController@initial');
+Route::get('/', 'HomeController@index');
 
+
+Route::post('/emailSave', 'EmailController@emailTempSave');
+
+Route::get('/sendEmail','EmailController@initial');
 
 Route::get('/emailTemp','EmailController@viewEmailTemp');
 
@@ -31,7 +35,17 @@ Route::get('/emailTemp/{emailTemp}','EmailController@showEmailTemp');
 
 // This is route file...
  
-Route::get('/form','EmailController@sendForm');
+//Route::post('/form','EmailController@sendForm');
+
+Route::get('/form',['as'=>'get.form','uses'=>'EmailController@sendForm']);
+
+Route::get('/formPreview',['as'=>'get.formPreview','uses'=>'EmailController@previewForm']);
+
+Route::get('/sendTemp',['as'=>'get.sendTemp','uses'=>'EmailController@sendTemp']);
 
 Route::get('/test','EmailController@test');
+
+Route::get('blade', function () {
+    return view('child');
+});
 

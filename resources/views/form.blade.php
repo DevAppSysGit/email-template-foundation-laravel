@@ -1,45 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Create Email Template</title> <!--
-  {!! Html::style('css/bootstrap.css') !!}
-  {!! Html::style('css/summernote.css') !!} -->
-  {!! Html::style('css/frmcss.css') !!}
-  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
-</head>
-<body>
-@if (Session::has('message'))
-   {{ Session::get('message') }}
-@endif
-<div class="form-style-5">
+@extends('layouts.app')
+
+@section('content')
+
+<div class="form-style-5" id="divprev">
 {!! Form::open(array('url'=>'/emailSave','method'=>'POST','class'=>'form-bootstrap'))!!}
 
 
-{{$title}}
-
+ {!! Form::label('Enter Template Name') !!} {!!Form::text('temp_name',null,['id'=>'temp_name']) !!}
+ <div> {!! Form::label('Template Header') !!}</div>
  {!! Form::textarea('TempHead',null,array('id'=>'TempHead','required'=>'required')) !!}
+ <div> {!! Form::label('Template Description') !!}</div>
  {!! Form::textarea('TempDesc',null,array('id'=>'TempDesc','required'=>'required')) !!}
+ <div> {!! Form::label('Template Body') !!}</div>
  {!! Form::textarea('TempBody',null,array('id'=>'TempBody','required'=>'required')) !!}
- {!! Form::textarea('TempFooter',null,array('id'=>'TempFooter','required'=>'required')) !!}
-
-  <!--
-  {!! Html::script('js/jquery.js') !!}
-  {!! Html::script('js/bootstrap.js') !!}
-  {!! Html::script('js/summernote.js') !!}-->
 
 <div>
+
   {!! Form::submit('Create') !!}
+
 </div>
+
 
 {!! Form::close() !!}
-</div>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+  <button id="preview" name="preview">Preview</button>
 
-  <script> 
+</div>
+
+<div id ="divcreate">
+    <table class="body" data-made-with-foundation>
+    <tr>
+      <!-- The class, align, and <center> tag center the container -->
+      <td class="float-center" align="center" valign="top">
+        <center>
+          <!-- The content of your email goes here. -->
+      
+        </center>
+      </td>
+    </tr>
+  </table>
+
+<button id="back" name="back">Back</button>
+
+ </div>
+
+   
+@endsection
+
+@section('scripts')
+
+ <script> 
+$('#divcreate').hide();
+ $(document).on('click','#preview',function(){
+  $('#divprev').hide();
+  $('#divcreate').show();
+  $('#divcreate').text('Name : '+$('#temp_name').val());
+ });
     $(document).ready(function() {
 
         $('#TempHead').summernote();
@@ -48,7 +63,5 @@
         $('#TempFooter').summernote();
 
     });
-  </script>
-
-</body>
-</html>
+    </script>
+@endsection
