@@ -2,66 +2,83 @@
 
 @section('content')
 
-<div class="form-style-5" id="divprev">
-{!! Form::open(array('url'=>'/emailSave','method'=>'POST','class'=>'form-bootstrap'))!!}
+<div class="form-style-5" id="divcreate">
+ <table class="button rounded">
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td id="preview">Preview</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
 
+  {!! Form::open(array('url'=>'/emailSave','method'=>'POST','class'=>'form-bootstrap'))!!}
+  {!! Form::label('Enter Template Name') !!} {!!Form::text('temp_name',null,['id'=>'temp_name']) !!}
+  <div> {!! Form::label('Template Header') !!}</div>
+  {!! Form::textarea('temp_head',null,array('id'=>'temp_head','required'=>'required')) !!}
+  <div> {!! Form::label('Template Description') !!}</div>
+  {!! Form::textarea('temp_desc',null,array('id'=>'temp_desc','required'=>'required')) !!}
+  <div> {!! Form::label('Template Body') !!}</div>
+  {!! Form::textarea('temp_body',null,array('id'=>'temp_body','required'=>'required')) !!}
 
- {!! Form::label('Enter Template Name') !!} {!!Form::text('temp_name',null,['id'=>'temp_name']) !!}
- <div> {!! Form::label('Template Header') !!}</div>
- {!! Form::textarea('TempHead',null,array('id'=>'TempHead','required'=>'required')) !!}
- <div> {!! Form::label('Template Description') !!}</div>
- {!! Form::textarea('TempDesc',null,array('id'=>'TempDesc','required'=>'required')) !!}
- <div> {!! Form::label('Template Body') !!}</div>
- {!! Form::textarea('TempBody',null,array('id'=>'TempBody','required'=>'required')) !!}
+ <div> {!! Form::submit('Create') !!} </div>
 
-<div>
-
-  {!! Form::submit('Create') !!}
+  {!! Form::close() !!}
 
 </div>
 
+<div id ="divprev">
 
-{!! Form::close() !!}
-  <button id="preview" name="preview">Preview</button>
+<table class="button rounded">
+  <tr>
+    <td>
+      <table>
+        <tr>
+          <td id="back">Back</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
 
+  <table align="center" class="container" border="1">
+  <tbody>
+    <tr><td id="temphead"></td></tr>
+    <tr><td id="tempdesc"></td></tr>
+    <tr><td id="tempbody"></td></tr>
+  </tbody>
 </div>
 
-<div id ="divcreate">
-    <table class="body" data-made-with-foundation>
-    <tr>
-      <!-- The class, align, and <center> tag center the container -->
-      <td class="float-center" align="center" valign="top">
-        <center>
-          <!-- The content of your email goes here. -->
-      
-        </center>
-      </td>
-    </tr>
-  </table>
-
-<button id="back" name="back">Back</button>
-
- </div>
-
-   
 @endsection
 
 @section('scripts')
 
- <script> 
-$('#divcreate').hide();
- $(document).on('click','#preview',function(){
+<script> 
   $('#divprev').hide();
+  $(document).on('click','#preview',function(){
+  $('#divcreate').hide();
+  $('#divprev').show();
+  document.getElementById('temphead').innerHTML = document.getElementById('temp_head').value
+  document.getElementById('tempdesc').innerHTML = document.getElementById('temp_desc').value
+  document.getElementById('tempbody').innerHTML= document.getElementById('temp_body').value
+  });
+
+ $(document).on('click','#back',function(){
   $('#divcreate').show();
-  $('#divcreate').text('Name : '+$('#temp_name').val());
+  $('#divprev').hide();
  });
-    $(document).ready(function() {
 
-        $('#TempHead').summernote();
-        $('#TempDesc').summernote();
-        $('#TempBody').summernote();
-        $('#TempFooter').summernote();
+  $(document).ready(function() {
 
-    });
-    </script>
+  $('#temp_head').summernote();
+  $('#temp_desc').summernote();
+  $('#temp_body').summernote();
+
+ });
+</script>
+
+
 @endsection

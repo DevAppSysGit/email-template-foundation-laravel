@@ -27,13 +27,13 @@ class EmailController extends Controller
     public function emailTempSave(Request $request)
     {
     	$emailTemp = new Emailtemp($request->all());
-        $emailTemp->tempname = $request->TempName;
-    	$emailTemp->tempheader = $request->TempHead;
-    	$emailTemp->tempdesc = $request->TempDesc;
-    	$emailTemp->tempbody = $request->TempBody;
+        $emailTemp->temp_name = $request->temp_name;
+    	$emailTemp->temp_head = $request->temp_head;
+    	$emailTemp->temp_desc = $request->temp_desc;
+    	$emailTemp->temp_body = $request->temp_body;
     	$emailTemp->save();
         
-        return redirect ('emailTemp/'.$emailTemp->id);
+         return redirect ('form/');
 
         //Session::flash('message', "Email Template created Successfully");
 
@@ -46,9 +46,12 @@ class EmailController extends Controller
     	return view('Emailtemp');
     }
 
-    public function viewEmailTemplate()
+    public function viewEmailTemplate(Request $request)
     {
-        return view('EmailTemplate');
+
+        $id = $request->temp;
+        $emailTemp = Emailtemp::find($id);
+        return view('EmailTemplate',compact('emailTemp'));
     }
 
     public function showEmailTemp($id) {
@@ -69,22 +72,16 @@ class EmailController extends Controller
         return view('form',compact('title'));
     }
 
-    public function previewForm(){
-        
-        $input = Input::get();
-        $tempheader = $input['TempHead'];
-        $tempdesc = $input ['TempDesc'];
-        $tempbody = $input['TempBody'];
-
-        return view('formView',['tempheader' => $tempheader, 'tempdesc' => $tempdesc, 'tempbody'=>$tempbody]);
-    }
-
-    public function test(){
+   public function test(){
         return view('test');
     }
 
+    public function testingS(){
+        return view('testingSummerNote');
+    }
+
     public function sendTemp() {
-        $templates = Emailtemp::lists('tempname','id');
-        return view('sendTemp',['templates'=>$templates]);
+        $templates = Emailtemp::lists('temp_name','id');
+        return view('sendTemp',compact('templates'));
     }      
 }
