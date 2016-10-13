@@ -71,13 +71,46 @@
   $('#divprev').hide();
  });
 
-  $(document).ready(function() {
+$(document).ready(function() {
 
-  $('#temp_head').summernote();
-  $('#temp_desc').summernote();
-  $('#temp_body').summernote();
+         $('#temp_head').summernote({
+            height: 200,
+            onImageUpload: function(files) {
+                sendFile(files[0]);
+            }
+        });
 
- });
+         $('#temp_desc').summernote({
+            height: 200,
+            onImageUpload: function(files) {
+                sendFile(files[0]);
+            }
+        });
+
+         $('#temp_body').summernote({
+            height: 200,
+            onImageUpload: function(files) {
+                sendFile(files[0]);
+            }
+        });
+
+        function sendFile(file, editor, welEditable) {
+            data = new FormData();
+            data.append("file", file);//You can append as many data as you want. Check mozilla docs for this
+            $.ajax({
+                data: data,
+                type: "POST",
+                url: 'uploader.php',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(url) {
+                    $('#temp_head').summernote('editor.insertImage', url);
+                }
+            });
+        }
+    });
+
 </script>
 
 

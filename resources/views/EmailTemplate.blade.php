@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -18,10 +19,10 @@
 
   <table align="center" class="container" border="1">
   <tbody>
-    <tr><td id="temphead">{{$emailTemp->temp_head}}</td></tr>
-    <tr><td id="tempdesc">{{$emailTemp->temp_desc}}</td></tr>
-    <tr><td id="tempbody">{{$emailTemp->temp_body}}</td></tr>
-  </tbody>
+     <tr><td id="temphead">{!! $emailTemp->temp_head !!}</td></tr>
+    <tr><td id="tempdesc">{!! $emailTemp->temp_desc !!}</td></tr>
+    <tr><td id="tempbody">{!! $emailTemp->temp_body !!}</td></tr>
+   </tbody>
 </div>
 
 @endsection

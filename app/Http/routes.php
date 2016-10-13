@@ -23,7 +23,7 @@ Route::get('/', 'HomeController@index');
 
 Route::post('/emailSave','EmailController@emailTempSave');
 
-Route::get('/sendEmail','EmailController@initial');
+//Route::get('/sendEmail','EmailController@initial');
 
 Route::get('/emailTemp','EmailController@viewEmailTemp');
 
@@ -41,7 +41,9 @@ Route::get('/formPreview',['as'=>'get.formPreview','uses'=>'EmailController@prev
 
 Route::get('/sendTemp',['as'=>'get.sendTemp','uses'=>'EmailController@sendTemp']);
 
-Route::get('/test','EmailController@test');
+Route::post('/sendMail', 'EmailController@send');
+
+//Route::get('/test','EmailController@test');
 
 Route::get('/testingS','EmailController@testingS');
 
