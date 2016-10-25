@@ -4,7 +4,10 @@
 
 
     <title>Title</title>
-    <style>@media only screen {
+    <style>
+
+
+    @media only screen {
     html {
         min-height: 100%;
         background: #f3f3f3
@@ -226,9 +229,10 @@
 
   <body style="-moz-box-sizing:border-box; -ms-text-size-adjust:100%; -webkit-box-sizing:border-box; -webkit-text-size-adjust:100%; box-sizing:border-box; margin:0; min-width:100%; padding:0; color:#0a0a0a; font-family:Helvetica, Arial, sans-serif; font-weight:normal; line-height:1.3; text-align:left; font-size:16px; width:100%" align="left" width="100%">
 
-{!!Form::text('temp_name',null,['id'=>'temp_name','class'=>'form-control','placeholder'=>'Template Name']) !!}
 
-  <textarea id="temp_body", name="temp_body">
+{!!Form::text('temp_name',null,['id'=>'temp_name','class'=>'form-control','placeholder'=>'Template Name','required'=>'required']) !!}
+
+  <textarea rows="30", id="temp_body", name="temp_body", class="form-control mceEditor">
 
     <!-- <style> -->
     <table class="body" id="temp_body" data-made-with-foundation="" style="border-collapse:collapse; border-spacing:0; padding:0; text-align:left; vertical-align:top; background:#f3f3f3; height:100%; width:100%; color:#0a0a0a; font-family:Helvetica, Arial, sans-serif; font-weight:normal; line-height:1.3; margin:0; font-size:16px" align="left" valign="top" height="100%" width="100%">
@@ -374,20 +378,15 @@
     </textarea>
   </body>
 
-    {!!Form::submit()!!}
+{!!Form::submit('CREATE',['class'=>'btn btn-info btn-block btn-space']) !!}
 
-    {!!Form::close()!!}
+{!!Form::close()!!}
 
 @endsection
 
 @section('scripts')
-<script> 
- 
- $(document).ready(function() {
 
-         $('#temp_body').summernote();
+<script type="text/javascript" src="{{URL::asset('js/tinymce/tinymce.min.js')}}"></script>
+<script src="{{ URL::asset('js/add-news.js')}}"></script>
 
-        // $('body').on('click','img',function(){alert('it works');})
- });
-</script>
 @endsection

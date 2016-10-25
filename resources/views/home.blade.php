@@ -5,22 +5,18 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Dashboard</div><br>
 
-                <div class="panel-body">
-                     <button><a href="{{route('get.form')}}">Create Template</a></button>
+                    <div class="form-group container">
+                        <button class="btn btn-default"><a href="{{route('get.basicTemp')}}" class="text-primary">Create Template</a> </button> </div>
+                   
+                     <div class="form-group container">
+                        <button class="btn btn-default"><a href="{{route('get.sendTemp')}}" class="text-primary">Send Template</a></button> </div>
                 </div>
 
-                <div class="panel-body">
-                  <button><a href="{{route('get.sendTemp')}}">Send Template</a></button>
                 </div>
-
-                <div>
-
-                </div>
+               
             </div>
         </div>
-    </div>
-</div>
 
 @endsection

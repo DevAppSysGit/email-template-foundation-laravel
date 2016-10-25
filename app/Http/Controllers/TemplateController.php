@@ -13,18 +13,6 @@ use Mail;
 class TemplateController extends Controller
 {
     //
-    public function test(){
-        return view('basic');
-    }
-
-    public function testtocheck(){
-        return view('testtocheck');
-    }
-
-public function emailtemptest(){
-        return view('emailtemptest');
-    }
-
     public function tempSave(Request $request){
 
        // return $request->temp_body;
@@ -33,7 +21,7 @@ public function emailtemptest(){
     	$temp->temp_body = $request->temp_body;
     	$temp->save();
 
-    	return view('basicTemp');
+    	return redirect('/home');
     }
 
     public function sendForm(){
@@ -44,14 +32,6 @@ public function emailtemptest(){
         $templates = Template::lists('temp_name','id');
         return view('sendTemp',compact('templates'));
     } 
-
-    public function hero(){
-        return view('hero');
-    }
-
-    public function testEmail(){
-        return view('basicTemp');
-    }
 
     public function viewEmailTemplate(Request $request)
     {
@@ -89,6 +69,29 @@ public function emailtemptest(){
                 }
             });
 
+            return redirect('/sendTemp');
+
+
         }
     }
 }
+
+    /* public function test(){
+        return view('basic');
+    }
+
+    public function testtocheck(){
+        return view('testtocheck');
+    }
+
+    public function emailtemptest(){
+        return view('emailtemptest');
+    }
+     public function hero(){
+        return view('hero');
+    }
+
+    public function testEmail(){
+        return view('basicTemp');
+    } */
+
